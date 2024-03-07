@@ -38,6 +38,7 @@
             </button>
           </form>
           <button @click="incriseCounter">Increase counter</button>
+          {{ count }}
         </div>
       </div>
     </div>
@@ -50,6 +51,11 @@ export default {
 
   data() {
     return {}
+  },
+  computed: {
+    count() {
+      return this.$store.state.count
+    },
   },
 
   mounted() {},
