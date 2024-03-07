@@ -1,5 +1,7 @@
 <template>
-  <div>Hello world Vue2 !</div>
-</template>
+  <div>
+    Hello world Vue2 !
 
-<style></style>
+    <router-view />
+  </div>
+</template>
