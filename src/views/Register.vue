@@ -33,12 +33,14 @@
                 placeholder="Password"
               />
             </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right">
+            <button
+              class="btn btn-lg btn-primary pull-xs-right"
+              :disabled="isSubmiting"
+            >
               Sign Up
             </button>
           </form>
-          <button @click="incriseCounter">Increase counter</button>
-          {{ count }}
+          {{ isSubmiting }}
         </div>
       </div>
     </div>
@@ -53,8 +55,8 @@ export default {
     return {}
   },
   computed: {
-    count() {
-      return this.$store.state.count
+    isSubmiting() {
+      return this.$store.state.auth.isSubmiting
     },
   },
 
@@ -63,9 +65,7 @@ export default {
   methods: {
     onSubmit() {
       console.log('On submit')
-    },
-    incriseCounter() {
-      this.$store.commit('increment')
+      this.$store.commit('registerStart')
     },
   },
 }
