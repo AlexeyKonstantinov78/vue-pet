@@ -65,7 +65,15 @@ export default {
   methods: {
     onSubmit() {
       console.log('On submit')
-      this.$store.dispatch('register')
+      this.$store
+        .dispatch('register', {
+          email: 'sdfkjhskjdfhsdfkj@getMaxListeners.com',
+          username: 'sdfkjhskjdfhsdfkj',
+          password: 'sdfkjh',
+        })
+        .then((user) => {
+          console.log('succes register user', user)
+        })
     },
   },
 }
