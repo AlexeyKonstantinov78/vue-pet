@@ -13,7 +13,7 @@
               <input
                 class="form-control form-control-lg"
                 type="text"
-                name="username"
+                v-model="username"
                 placeholder="Username"
               />
             </fieldset>
@@ -21,7 +21,7 @@
               <input
                 class="form-control form-control-lg"
                 type="text"
-                name="email"
+                v-model="email"
                 placeholder="Email"
               />
             </fieldset>
@@ -29,7 +29,7 @@
               <input
                 class="form-control form-control-lg"
                 type="password"
-                name="password"
+                v-model="password"
                 placeholder="Password"
               />
             </fieldset>
@@ -52,7 +52,11 @@ export default {
   name: 'McvRegister',
 
   data() {
-    return {}
+    return {
+      username: '',
+      email: '',
+      password: '',
+    }
   },
   computed: {
     isSubmiting() {
@@ -67,9 +71,9 @@ export default {
       console.log('On submit')
       this.$store
         .dispatch('register', {
-          email: 'sdfkjhskjdfhsdfkj@getMaxListeners.com',
-          username: 'sdfkjhskjdfhsdfkj',
-          password: 'sdfkjh',
+          email: this.email,
+          username: this.username,
+          password: this.password,
         })
         .then((user) => {
           console.log('succes register user', user)
