@@ -1,4 +1,6 @@
 import authApi from '@/api/auth';
+import { TOKEN_KEY } from '@/helpers/constants';
+import { setItem } from '@/helpers/persistensSrorage';
 
 const state = {
   isSubmiting: false,
@@ -32,6 +34,7 @@ const actions = {
       authApi.register(credentials)
         .then(response => {
           context.commit('registerSuccess', response.data.user);
+          setItem(TOKEN_KEY, response.data.user.token);
           resolve(response.data.user)
         })
         .catch(err => {
