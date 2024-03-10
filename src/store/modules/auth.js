@@ -38,7 +38,11 @@ const actions = {
           resolve(response.data.user)
         })
         .catch(err => {
-          context.commit('registerFailure', err.response.data.errors);
+          if (err.response) {
+            context.commit('registerFailure', err.response.data.errors);
+          } else {
+            context.commit('registerFailure', { code: ["Ошибка соединения"] });
+          }
         });
     })
   }
