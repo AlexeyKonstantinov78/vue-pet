@@ -72,6 +72,7 @@
 </template>
 
 <script>
+import {gettersTypes} from '@/store/modules/auth'
 import {mapState} from 'vuex'
 export default {
   name: 'McvTopbar',
@@ -82,9 +83,12 @@ export default {
 
   computed: {
     ...mapState({
-      currentUser: (state) => state.auth.currentUser,
+      // currentUser: (state) => state.auth.currentUser,
       isLoggedIn: (state) => state.auth.isLoggedIn,
     }),
+    currentUser() {
+      return this.$store.getters[gettersTypes.currentUser]
+    },
   },
 
   mounted() {},
