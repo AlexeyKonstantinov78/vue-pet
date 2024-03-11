@@ -48,7 +48,7 @@
             </router-link>
           </li>
         </template>
-        <template v-else>
+        <template v-if="isAnonymous">
           <li class="nav-item">
             <router-link
               class="nav-link"
@@ -84,10 +84,16 @@ export default {
   computed: {
     ...mapState({
       // currentUser: (state) => state.auth.currentUser,
-      isLoggedIn: (state) => state.auth.isLoggedIn,
+      // isLoggedIn: (state) => state.auth.isLoggedIn,
     }),
     currentUser() {
       return this.$store.getters[gettersTypes.currentUser]
+    },
+    isLoggedIn() {
+      return this.$store.getters[gettersTypes.isLoggedIn]
+    },
+    isAnonymous() {
+      return this.$store.getters[gettersTypes.isAnonymous]
     },
   },
 
