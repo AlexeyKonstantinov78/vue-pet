@@ -37,15 +37,9 @@ export const gettersTypes = {
 }
 
 const getters = {
-  [gettersTypes.currentUser]: state => {
-    return state.currentUser
-  },
-  [gettersTypes.isLoggedIn]: state => {
-    return Boolean(state.isLoggedIn)
-  },
-  [gettersTypes.isAnonymous]: state => {
-    return state.isLoggedIn === false;
-  }
+  [gettersTypes.currentUser]: state => (state.currentUser),
+  [gettersTypes.isLoggedIn]: state => (Boolean(state.isLoggedIn)),
+  [gettersTypes.isAnonymous]: state => (state.isLoggedIn === false)
 }
 
 const mutations = {

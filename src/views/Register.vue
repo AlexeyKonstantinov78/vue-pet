@@ -72,12 +72,6 @@ export default {
       isSubmiting: (state) => state.auth.isSubmiting,
       validationErrors: (state) => state.auth.validationErrors,
     }),
-    // isSubmiting() {
-    //   return this.$store.state.auth.isSubmiting
-    // },
-    // validationErrors() {
-    //   return this.$store.state.auth.validationErrors
-    // },
   },
 
   mounted() {},
