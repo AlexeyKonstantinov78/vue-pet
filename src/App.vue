@@ -17,7 +17,7 @@ export default {
   mounted() {
     this.$store.dispatch(actionTypes.getCurrentUser).then((user) => {
       console.log('succes registr user', user)
-      this.$router.push({name: 'home'})
+      this.$router.push({name: 'globalFeed'})
     })
   },
 }
