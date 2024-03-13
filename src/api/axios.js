@@ -9,7 +9,6 @@ axios.interceptors.request.use(config => {
   const token = getItem(TOKEN_KEY);
 
   const authorizationToken = token ? `Token ${token}` : '';
-  console.log('config: ', config);
   config.headers.setAuthorization(authorizationToken);
   return config;
 })
