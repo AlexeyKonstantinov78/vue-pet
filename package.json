@@ -11,6 +11,7 @@
     "@vue/compat": "^3.4.21",
     "axios": "^1.6.7",
     "core-js": "^3.36.0",
+    "query-string": "^9.0.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "vuex": "^4.1.0"
