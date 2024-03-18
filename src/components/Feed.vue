@@ -99,6 +99,9 @@ export default {
       console.log('Current page: change')
       this.fetchFeed()
     },
+    apiUrl() {
+      this.fetchFeed()
+    },
   },
   mounted() {
     this.fetchFeed()
