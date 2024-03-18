@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-if="isLoading">Загрузка...</div>
+    <mcv-loading v-if="isLoading" />
 
-    <div v-if="errors">ERRORS</div>
+    <mcv-error-message v-if="errors" :message="errors" />
 
     <div v-if="feed">
       <div
@@ -56,6 +56,8 @@ import {actionTypes} from '@/store/modules/feed'
 import McvPagination from '@/components/McvPagination'
 import {LIMIT} from '@/helpers/constants'
 import queryString from 'query-string'
+import McvLoading from '@/components/Loading'
+import McvErrorMessage from '@/components/ErrorMessage'
 
 export default {
   name: 'McvFeed',
@@ -67,6 +69,8 @@ export default {
   },
   components: {
     McvPagination,
+    McvLoading,
+    McvErrorMessage,
   },
   computed: {
     ...mapState({

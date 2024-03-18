@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar">
     <p>Popular Tags</p>
-    <div v-if="isLoading">Загрузка...</div>
+    <mcv-loading v-if="isLoading" />
 
-    <div v-if="errors">ERRORS</div>
+    <mcv-error-message v-if="errors" :message="errors" />
 
     <div class="post-preview" v-if="popularTags == []">
       No tags are here... yet.
@@ -25,9 +25,15 @@
 <script>
 import {actionTypes} from '@/store/modules/popularTags'
 import {mapState} from 'vuex'
+import McvLoading from '@/components/Loading'
+import McvErrorMessage from '@/components/ErrorMessage'
 
 export default {
   name: 'McvPopularTags',
+  components: {
+    McvLoading,
+    McvErrorMessage,
+  },
 
   computed: {
     ...mapState({
