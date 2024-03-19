@@ -39,7 +39,7 @@ export default {
       return this.$route.params.slug
     },
     apiUrl() {
-      return `/articles?tags=${this.tagName}`
+      return `/articles?tag=${this.tagName}`
     },
   },
 

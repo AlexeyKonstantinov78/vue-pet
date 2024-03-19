@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mcv-loading v-if="isLoading" />
+    <mcv-loading class="article-preview" v-if="isLoading" />
 
     <mcv-error-message v-if="errors" :message="errors" />
 
