@@ -21,7 +21,7 @@
             </router-link>
             <span class="date">{{ article.createdAt }}</span>
           </div>
-          <span>
+          <span v-if="isAuthor">
             <router-link
               class="btn btn-outline-secondary btn-sm"
               :to="{name: 'editArticle', params: {slug: article.slug}}"
@@ -51,10 +51,11 @@
 </template>
 
 <script>
-import {actionTypes} from '@/store/modules/article'
-import {mapState} from 'vuex'
+import {actionTypes as articleActionType} from '@/store/modules/article'
+import {mapGetters, mapState} from 'vuex'
 import McvLoading from '@/components/Loading'
 import McvErrorMessage from '@/components/ErrorMessage.vue'
+import {gettersTypes as authGetterTypes} from '@/store/modules/auth'
 
 export default {
   name: 'MvcArticle',
@@ -72,10 +73,20 @@ export default {
       isLoading: (state) => state.article.isLoading,
       errors: (state) => state.article.errors,
     }),
+    ...mapGetters({
+      currentUser: authGetterTypes.currentUser,
+    }),
+    isAuthor() {
+      if (!this.currentUser || !this.article) {
+        return false
+      }
+
+      return this.currentUser.username === this.article.author.username
+    },
   },
 
   mounted() {
-    this.$store.dispatch(actionTypes.getArticle, {
+    this.$store.dispatch(articleActionType.getArticle, {
       slug: this.$route.params.slug,
     })
   },
