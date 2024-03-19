@@ -28,7 +28,10 @@
             >
               <i class="ion-edit"></i> Edit Article
             </router-link>
-            <button class="btn btn-outline-danger btn-sm">
+            <button
+              class="btn btn-outline-danger btn-sm"
+              @click="deleteArticle"
+            >
               <i class="ion-trash-a"></i> Delete Article
             </button>
           </span>
@@ -51,7 +54,7 @@
 </template>
 
 <script>
-import {actionTypes as articleActionType} from '@/store/modules/article'
+import {actionTypes as articleActionTypes} from '@/store/modules/article'
 import {mapGetters, mapState} from 'vuex'
 import McvLoading from '@/components/Loading'
 import McvErrorMessage from '@/components/ErrorMessage.vue'
@@ -86,11 +89,19 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch(articleActionType.getArticle, {
+    this.$store.dispatch(articleActionTypes.getArticle, {
       slug: this.$route.params.slug,
     })
   },
 
-  methods: {},
+  methods: {
+    deleteArticle() {
+      this.$store
+        .dispatch(articleActionTypes.deleteArticle, {
+          slug: this.$route.params.slug,
+        })
+        .then(() => this.$router.push({name: 'globalFeed'}))
+    },
+  },
 }
 </script>
