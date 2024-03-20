@@ -37,7 +37,7 @@
           <h1>{{ article.title }}</h1>
           <p>{{ article.description }}</p>
           <span>Read more...</span>
-          TAG LIST
+          <mcv-tag-list v-if="article.tagList" :tags-list="article.tagList" />
         </router-link>
       </div>
       <mcv-pagination
@@ -58,6 +58,7 @@ import {LIMIT} from '@/helpers/constants'
 import queryString from 'query-string'
 import McvLoading from '@/components/Loading'
 import McvErrorMessage from '@/components/ErrorMessage'
+import McvTagList from '@/components/TagList'
 
 export default {
   name: 'McvFeed',
@@ -71,6 +72,7 @@ export default {
     McvPagination,
     McvLoading,
     McvErrorMessage,
+    McvTagList,
   },
   computed: {
     ...mapState({
@@ -118,7 +120,6 @@ export default {
 
       const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
       console.log('apiUrlWithParams: ', apiUrlWithParams)
-
       this.$store.dispatch(actionTypes.getFeed, {apiUrl: apiUrlWithParams})
     },
   },
