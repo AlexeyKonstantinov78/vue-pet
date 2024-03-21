@@ -1,0 +1,42 @@
+<template>
+  <div class="container">
+    <mcv-article-form
+      :initial-values="initialValues"
+      :errors="validationErrors"
+      :is-submitting="isSubmitting"
+      @articleSubmit="onSubmit"
+    />
+  </div>
+</template>
+
+<script>
+import McvArticleForm from '@/components/ArticleForm'
+
+export default {
+  name: 'McvCreateArticle',
+  components: {
+    McvArticleForm,
+  },
+
+  data() {
+    return {
+      initialValues: {
+        title: '',
+        description: '',
+        body: '',
+        tagList: [],
+      },
+      validationErrors: null,
+      isSubmitting: false,
+    }
+  },
+
+  mounted() {},
+
+  methods: {
+    onSubmit(data) {
+      console.log('data: ', data)
+    },
+  },
+}
+</script>
