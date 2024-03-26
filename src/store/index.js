@@ -4,6 +4,7 @@ import auth from '@/store/modules/auth'
 import feed from '@/store/modules/feed'
 import popularTags from '@/store/modules/popularTags'
 import article from '@/store/modules/article'
+import articleCreate from '@/store/modules/createArticle';
 
 export default createStore({
   state: {
@@ -18,6 +19,7 @@ export default createStore({
     auth,
     feed,
     popularTags,
-    article
+    article,
+    articleCreate,
   }
 })

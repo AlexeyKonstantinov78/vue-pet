@@ -11,6 +11,8 @@
 
 <script>
 import McvArticleForm from '@/components/ArticleForm'
+import {actionTypes} from '@/store/modules/createArticle'
+import {mapState} from 'vuex'
 
 export default {
   name: 'McvCreateArticle',
@@ -26,16 +28,25 @@ export default {
         body: '',
         tagList: [],
       },
-      validationErrors: null,
-      isSubmitting: false,
     }
+  },
+
+  computed: {
+    ...mapState({
+      isSubmitting: (state) => state.articleCreate.isSubmitting,
+      validationErrors: (state) => state.articleCreate.validationErrors,
+    }),
   },
 
   mounted() {},
 
   methods: {
-    onSubmit(data) {
-      console.log('data: ', data)
+    onSubmit(articleInput) {
+      this.$store
+        .dispatch(actionTypes.createArticle, {articleInput})
+        .then((article) => {
+          this.$router.push({name: 'article', params: {slug: article.slug}})
+        })
     },
   },
 }
