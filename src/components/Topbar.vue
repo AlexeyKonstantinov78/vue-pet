@@ -27,7 +27,7 @@
           <li class="nav-item">
             <router-link
               class="nav-link"
-              :to="{name: 'globalFeed'}"
+              :to="{name: 'settings'}"
               active-class="active"
             >
               <i class="ion-gear-a"></i> &nbsp; Settings
